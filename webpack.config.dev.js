@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 
-module.exports = {
+var config = {
 	entry: [
 		'webpack-hot-middleware/client',
 		path.resolve(__dirname, 'src')
@@ -43,3 +43,5 @@ module.exports = {
         return [autoprefixer];
     }
 };
+
+module.exports = config;

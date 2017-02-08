@@ -1,17 +1,12 @@
+var config = require('./webpack.config.dev.js');
+
 const path = require('path');
 const webpack = require('webpack');
-const autoprefixer = require('autoprefixer');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-module.exports = {
-	entry: path.resolve(__dirname, 'src'),
-	output: {
-		path: path.resolve(__dirname, 'dist'),
-		filename: 'bundle.js',
-		publicPath: '/'
-	},
-	plugins: [
+config.entry.shift();
+config.plugins = [
 		new webpack.DefinePlugin({
 			'process.env': {
 				NODE_ENV: JSON.stringify('production'),
@@ -30,22 +25,6 @@ module.exports = {
 			}
 		]),
 		new ExtractTextPlugin('bundle.css')
-	],
-	module: {
-		loaders: [
-			{ 
-				test: /\.js$/,
-				loader: 'babel',
-				include: path.resolve(__dirname, 'src')
-			},
-			{
-				test: /\.scss/,
-				loader: ExtractTextPlugin.extract('style', 'css!sass!postcss'),
-				include: path.resolve(__dirname, 'src')
-			}
-		]
-	},
-    postcss: function() {
-        return [autoprefixer];
-    }
-};
+];
+
+module.exports = config;

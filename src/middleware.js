@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { match, RouterContext } from 'react-router';
 import reducers from './reducers';
 import routes from './routes';
+import Helmet from 'react-helmet';
 
 export default (req, res) => {
 	match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
@@ -17,9 +18,6 @@ export default (req, res) => {
 				res.status(200).send(`
 					<!doctype html>
 					<html>
-						<header>
-							<title>My Universal App</title>
-						</header>
 						<body>
 							<div id='app'></div>
 							<script src='bundle.js'></script>
@@ -27,19 +25,25 @@ export default (req, res) => {
 					</html>
 				`);
 			} else if(process.env.NODE_ENV == 'production') {
+				let renderBody = renderToString(
+					<Provider store={createStore(reducers)}>
+						<RouterContext {...renderProps} />
+					</Provider>
+				)
+				let head = Helmet.rewind();
 				res.status(200).send(`
 					<!doctype html>
 					<html>
+						<head>
+							<meta charset="utf-8" />
+							${head.title}
+							${head.meta}
+						</head>
 						<header>
-							<title>My Universal App</title>
 							<link rel='stylesheet' href='bundle.css'>
 						</header>
 						<body>
-							<div id='app'>${renderToString(
-								<Provider store={createStore(reducers)}>
-									<RouterContext {...renderProps} />
-								</Provider>
-							)}</div>
+							<div id='app'>${renderBody}</div>
 							<script src='bundle.js'></script>
 						</body>
 					</html>
