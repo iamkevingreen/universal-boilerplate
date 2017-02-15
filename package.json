@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "lint": "eslint ./src",
-    "dev": "cross-env NODE_ENV=development babel-node ./server.js",
+    "dev": "webpack-dashboard cross-env NODE_ENV=development babel-node ./server.js",
     "build": "rimraf dist && webpack --config ./webpack.config.prod.js",
     "start": "cross-env NODE_ENV=production babel-node ./server.js"
   },
@@ -50,6 +50,7 @@
   "dependencies": {
     "lodash": "^4.17.4",
     "react-helmet": "^4.0.0",
-    "webpack": "^2.2.1"
+    "webpack": "^2.2.1",
+    "webpack-dashboard": "^0.3.0"
   }
 }
