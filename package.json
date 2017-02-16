@@ -7,7 +7,11 @@
     "lint": "eslint ./src",
     "dev": "webpack-dashboard cross-env NODE_ENV=development babel-node ./server.js",
     "build": "rimraf dist && webpack --config ./webpack.config.prod.js",
-    "start": "cross-env NODE_ENV=production babel-node ./server.js"
+    "start": "cross-env NODE_ENV=production babel-node ./server.js",
+    "deploy": "now --name starter-uni"
+  },
+  "now": {
+    "alias": "starter.thecouch.nyc"
   },
   "author": "Justin Jung <justinjung04@gmail.com>",
   "license": "MIT",
@@ -48,6 +52,7 @@
     "url": "https://github.com/justinjung04/universal-boilerplate.git"
   },
   "dependencies": {
+    "extract-text-webpack-plugin": "2.0.0-rc.3",
     "lodash": "^4.17.4",
     "react-helmet": "^4.0.0",
     "webpack": "^2.2.1",

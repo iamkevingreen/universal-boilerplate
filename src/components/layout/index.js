@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+if(process.env.WEBPACK) require('../../styles/app.scss');
+
 class App extends Component {
   render() {
     return (

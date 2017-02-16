@@ -5,6 +5,11 @@ const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
+const extractSass = new ExtractTextPlugin({
+	filename: "bundle.css",
+	disable: process.env.NODE_ENV === "development"
+})
+
 config.entry.shift();
 config.plugins = [
 		new webpack.DefinePlugin({
@@ -24,7 +29,32 @@ config.plugins = [
 				to: path.resolve(__dirname, 'dist', 'assets')
 			}
 		]),
-		new ExtractTextPlugin('bundle.css')
+		extractSass
 ];
+
+config.module = {
+	rules: [
+		{
+			test: /\.scss/,
+			include: path.resolve(__dirname, 'src'),
+			loader: extractSass.extract({
+				loader: [{
+					loader: "css-loader"
+				}, {
+					loader: "sass-loader"
+				}],
+				fallbackLoader: "style-loader"
+			})
+		},
+		{
+			test: /\.js$/,
+			loader: 'babel-loader',
+			include: path.resolve(__dirname, 'src'),
+			query: {
+				presets: [ 'react-hmre' ]
+			}
+		}
+	]
+}
 
 module.exports = config;
