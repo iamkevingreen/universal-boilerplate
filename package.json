@@ -7,7 +7,7 @@
     "lint": "eslint ./src",
     "dev": "webpack-dashboard cross-env NODE_ENV=development babel-node ./server.js",
     "build": "rimraf dist && webpack --config ./webpack.config.prod.js",
-    "heroku-prebuild": "yarn run build",
+    "postinstall": "yarn run build",
     "start": "cross-env NODE_ENV=production babel-node ./server.js",
     "deploy": "now --name starter-uni"
   },
