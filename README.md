@@ -1,4 +1,4 @@
-# Boilder plate for Isomorphic App
+# Boiler plate for Isomorphic App
 
 View the working [working example](https://shrouded-coast-36237.herokuapp.com/)
 
