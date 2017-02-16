@@ -10,7 +10,7 @@ export default class Header extends Component {
 				<Helmet
 					htmlAttributes={{lang: "en", amp: undefined}} // amp takes no value
           title="Life of bagels"
-          titleTemplate="bagels.com - %s"
+          titleTemplate={props.title}
           defaultTitle="My Default Title"
 					meta={[
                 {property: 'og:title', content: 'About'},
