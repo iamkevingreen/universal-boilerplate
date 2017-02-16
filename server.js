@@ -1,7 +1,9 @@
 import path from 'path';
 import express from 'express';
 import webpack from 'webpack';
+
 import middleware from './src/middleware';
+import apiRoutes from './src/apiRoutes';
 
 import DashboardPlugin from 'webpack-dashboard/plugin';
 
@@ -30,7 +32,8 @@ if(process.env.NODE_ENV === 'development') {
 	app.use(express.static(path.resolve(__dirname, 'dist')));
 }
 
-app.get('*', middleware);
+app.use('/api', apiRoutes);
+app.use('/', middleware);
 
 app.listen(process.env.PORT || 3000, '0.0.0.0', (err) => {
 	if(err) {

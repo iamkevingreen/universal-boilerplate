@@ -33,6 +33,7 @@ class Home extends Component {
 				<Link to='/page'>
 					<button>Go to page</button>
 				</Link>
+				Also a lil api routing babez <a href="/api/taco">Taco</a>
 			</div>
 		);
 	}
