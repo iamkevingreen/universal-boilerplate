@@ -11,6 +11,7 @@ const extractSass = new ExtractTextPlugin({
 })
 
 config.entry.shift();
+config.output.path = path.resolve(__dirname, 'dist');
 config.plugins = [
 		new webpack.DefinePlugin({
 			'process.env': {
@@ -37,24 +38,21 @@ config.module = {
 		{
 			test: /\.scss/,
 			include: path.resolve(__dirname, 'src'),
-			loader: extractSass.extract({
-				loader: [{
+			use: extractSass.extract({
+				use: [{
 					loader: "css-loader"
 				}, {
 					loader: "sass-loader"
 				}],
-				fallbackLoader: "style-loader"
+				fallback: "style-loader"
 			})
 		},
 		{
 			test: /\.js$/,
 			loader: 'babel-loader',
-			include: path.resolve(__dirname, 'src'),
-			query: {
-				presets: [ 'react-hmre' ]
-			}
+			include: path.resolve(__dirname, 'src')
 		}
 	]
-}
+};
 
 module.exports = config;

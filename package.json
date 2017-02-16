@@ -13,6 +13,9 @@
   "now": {
     "alias": "starter.thecouch.nyc"
   },
+  "engines": {
+    "node": "4.6.1"
+  },
   "author": "Justin Jung <justinjung04@gmail.com>",
   "license": "MIT",
   "devDependencies": {
