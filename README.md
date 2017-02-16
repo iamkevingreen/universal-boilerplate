@@ -1,30 +1,34 @@
-# universal-boilerplate
+# Boilder plate for Isomorphic App
+
+- SSR via Express and Redux
+- OpenGraph Supported via Helmet and Helmet.rewind()
+- Templating in React
+
 
 ### Install
 ```sh
-git clone https://github.com/justinjung04/universal-boilerplate.git
+git clone https://github.com/iamkevingreen/universal-boilerplate.git
 cd universal-boilerplate
-npm install
+yarn install
 ```
+
+This is a fork of [Justin's Starter](https://github.com/justinjung04/universal-boilerplate)
 
 ### Run the app from a dev server
 ```sh
-npm start
+yarn start
 ```
 
 ### Build the app
 ```sh
-npm run build
+yarn run build
 ```
 
-### Host the app from a server (app must have been built)
-```sh
-npm run serve
-```
+### Deployment
+Currently works with Now and Heroku, but preferring Heroku because I ran out of free deploys on Now.
 
-### Switch versions (ex. v1.0.0)
 ```sh
-git checkout v1.0.0
+yarn run deploy
 ```
 
 ### Article

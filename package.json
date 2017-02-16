@@ -10,13 +10,10 @@
     "start": "cross-env NODE_ENV=production babel-node ./server.js",
     "deploy": "yarn run build && git push heroku master"
   },
-  "now": {
-    "alias": "starter.thecouch.nyc"
-  },
   "engines": {
     "node": "4.6.1"
   },
-  "author": "Justin Jung <justinjung04@gmail.com>",
+  "author": "Kevin Green",
   "license": "MIT",
   "devDependencies": {
     "css-loader": "^0.23.1",
@@ -34,7 +31,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/justinjung04/universal-boilerplate.git"
+    "url": "https://github.com/iamkevingreen/universal-boilerplate.git"
   },
   "dependencies": {
     "cross-env": "^2.0.0",
