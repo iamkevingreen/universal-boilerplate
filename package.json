@@ -7,9 +7,8 @@
     "lint": "eslint ./src",
     "dev": "webpack-dashboard cross-env NODE_ENV=development babel-node ./server.js",
     "build": "rimraf dist && webpack --config ./webpack.config.prod.js",
-    "postinstall": "yarn run build",
     "start": "cross-env NODE_ENV=production babel-node ./server.js",
-    "deploy": "now --name starter-uni"
+    "deploy": "yarn run build && git push heroku master"
   },
   "now": {
     "alias": "starter.thecouch.nyc"
