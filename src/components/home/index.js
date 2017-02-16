@@ -12,7 +12,16 @@ class Home extends Component {
 		return (
 			<div className='home'>
 				<Header title='Home' />
-				<div>This is home</div>
+				<div>
+					<h2>Welcome to the universal-boilerplate</h2>
+					<p>Features:</p>
+					<ul>
+						<li>React, Redux</li>
+						<li>Express</li>
+						<li>SSR rendering via Redux</li>
+						<li>React Helmet for meta fields on the server</li>
+					</ul>
+				</div>
 				<br />
 				{todos.map((todo) => (
 					<div key={ todo.id }>

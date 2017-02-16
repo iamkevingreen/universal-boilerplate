@@ -13,7 +13,7 @@ export default class Header extends Component {
           titleTemplate={props.title}
           defaultTitle="My Default Title"
 					meta={[
-                {property: 'og:title', content: 'About'},
+                {property: 'og:title', content: props.title},
             ]}
 					/>
 				<h1 {...props}>
