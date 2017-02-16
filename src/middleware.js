@@ -50,7 +50,23 @@ export default (req, res) => {
 				`);
 			}
 		} else {
-			res.status(404).send('Not found');
+			res.status(404).send(`
+				<!doctype html>
+				<html>
+					<head>
+						<meta charset="utf-8" />
+						${head.title}
+						${head.meta}
+					</head>
+					<header>
+						<link rel='stylesheet' href='bundle.css'>
+					</header>
+					<body>
+						<div id='app'>${renderBody}</div>
+						<script src='bundle.js'></script>
+					</body>
+				</html>
+			`);
 		}
 	});
 };
